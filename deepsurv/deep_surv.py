@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import lasagne
 import numpy
@@ -206,7 +206,7 @@ class DeepSurv:
 
         # If the model was loaded from file, reload params
         if self.restored_update_params:
-            for p, value in zip(updates.keys(), self.restored_update_params):
+            for p, value in zip(list(updates.keys()), self.restored_update_params):
                 p.set_value(value)
             self.restored_update_params = None
 
@@ -482,7 +482,7 @@ class DeepSurv:
 
         weights_out = lasagne.layers.get_all_param_values(self.network, trainable=False)
         if self.updates:
-            updates_out = [p.get_value() for p in self.updates.keys()]
+            updates_out = [p.get_value() for p in list(self.updates.keys())]
         else:
             raise Exception("Model has not been trained: no params to save!")
 

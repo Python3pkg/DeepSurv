@@ -20,7 +20,7 @@ def plot_log(log):
     plt.figure()
     handles = []
     if 'train' in log:
-        epochs = range(len(log['train']))
+        epochs = list(range(len(log['train'])))
         train, = plt.plot(epochs,log['train'], label = 'Training')
         handles.append(train)
     if 'valid' in log:

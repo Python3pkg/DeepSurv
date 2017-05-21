@@ -66,10 +66,10 @@ class TestDeepSurvTrain():
 
     def test_train(self):
         # Test if network computes nan for any values
-        assert self.log.has_key('train') == True
+        assert ('train' in self.log) == True
         assert numpy.any(numpy.isnan(self.log['train'])) == False
 
-        assert self.log.has_key('valid') == True
+        assert ('valid' in self.log) == True
         assert numpy.any(numpy.isnan(self.log['valid'])) == False
 
     def test_network_predict_risk(self):

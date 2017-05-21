@@ -46,7 +46,7 @@ class SimulatedData:
         """
         # Make the coefficients [1,2,...,num_var,0,..0]
         b = np.zeros((self.m,))
-        b[0:self.num_var] = range(1,self.num_var + 1)
+        b[0:self.num_var] = list(range(1,self.num_var + 1))
 
         # Linear Combinations of Coefficients and Covariates
         risk = np.dot(x, b)
@@ -106,7 +106,7 @@ class SimulatedData:
 
         if self.treatment_group:
             data[:,-1] = np.squeeze(np.random.randint(0,2,(N,1)))
-            print(data[:,-1])
+            print((data[:,-1]))
 
         # Each patient has a uniform death probability
         p_death = self.average_death * np.ones((N,1))
